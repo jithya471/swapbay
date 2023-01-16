@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swapbay/button.dart';
+import 'package:swapbay/register.dart';
 import 'package:video_player/video_player.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 2));
 
     Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (BuildContext context) => Button()));
+        MaterialPageRoute(builder: (BuildContext context) => RegisterPage()));
   }
 
   @override
