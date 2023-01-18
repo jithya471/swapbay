@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Settings extends StatefulWidget {
+  const Settings({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Settings> createState() => _SettingsState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor:  Colors.orange,
           body: SafeArea(
         child: Container(
-          color: Colors.pink,
+          child: Center(child: Text('Settings')),
         ),
       )),
     );

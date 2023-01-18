@@ -9,8 +9,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:swapbay/accounts.dart';
+import 'package:swapbay/bottomNavigation.dart';
+import 'package:swapbay/edit.dart';
 import 'package:swapbay/home.dart';
 import 'package:swapbay/register.dart';
+import 'package:swapbay/settings.dart';
 import 'package:swapbay/splashScreen.dart';
 
 void main() {
@@ -30,9 +33,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/splashscreen',
       routes: {
         '/splashscreen': (context) => SplashScreen(),
-        '/register': (context) => RegisterPage(),
-        '/home':(context) => HomePage(),
-        '/accounts':(context) => AccountsPage(),
+        // '/register': (context) => RegisterPage(),
+        '/home': (context) => Example(),
+        // '/accounts': (context) => AccountsPage(),
+        '/settings': (context) => Settings(),
+        '/edit': (context) => Edit(),
       },
     );
   }

@@ -1,124 +1,131 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:swapbay/accounts.dart';
+import 'package:swapbay/chat.dart';
+import 'package:swapbay/home.dart';
+import 'package:swapbay/myads.dart';
+import 'package:swapbay/sell.dart';
 
-class Home extends StatefulWidget {
+void main() => runApp(MaterialApp(
+    builder: (context, child) {
+      return Directionality(textDirection: TextDirection.ltr, child: child!);
+    },
+    title: 'GNav',
+    theme: ThemeData(
+      primaryColor: Colors.grey[800],
+    ),
+    home: Example()));
+
+class Example extends StatefulWidget {
   @override
-  State<Home> createState() => _HomeState();
+  _ExampleState createState() => _ExampleState();
 }
 
-class _HomeState extends State<Home> {
+class _ExampleState extends State<Example> {
+  int _selectedIndex = 0;
 
-  int currentTab = 0;
-  final List<Widget> screens = [
-    Home(),
-    // SellScreen(),
-    // MyAds(),
-    // ProfilePage(),
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    MyAds(),
+    Sell(),
+    ChatScreen(),
+    AccountsPage(),
   ];
-
-  final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = Home();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageStorage(
-        child: currentScreen,
-        bucket: bucket,
+      backgroundColor: Colors.black,
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: (){},
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar:
-        Container(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MaterialButton(
-                      minWidth: 40,
-                      onPressed: (){
-                          setState(() {
-                            currentScreen = Home();
-                            currentTab = 0;
-                          });
-                  },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.home,
-                        color: currentTab ==0 ?Colors.blue: Colors.grey,),
-                        Text('Home',style: TextStyle(color: currentTab == 0 ?Colors.blue: Colors.grey),),
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: (){
-                      setState(() {
-                        currentScreen = AccountsPage();
-                        currentTab = 1;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.chat,
-                          color: currentTab ==0 ?Colors.blue: Colors.grey,),
-                        Text('chat',style: TextStyle(color: currentTab == 1 ?Colors.blue: Colors.grey),),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              //Right Tabs
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: (){
-                      setState(() {
-                        currentScreen = Home();
-                        currentTab = 0;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.home,
-                          color: currentTab ==0 ?Colors.blue: Colors.grey,),
-                        Text('Home',style: TextStyle(color: currentTab == 0 ?Colors.blue: Colors.grey),),
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: (){
-                      setState(() {
-                        currentScreen = AccountsPage();
-                        currentTab = 1;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.chat,
-                          color: currentTab ==0 ?Colors.blue: Colors.grey,),
-                        Text('chat',style: TextStyle(color: currentTab == 1 ?Colors.blue: Colors.grey),),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(25)),
+          gradient: LinearGradient(colors: [
+            Color.fromARGB(255, 230, 58, 58),
+            Color.fromARGB(255, 238, 88, 125)
+          ]),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 20,
+              color: Colors.black.withOpacity(.1),
+            )
+          ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
+            child: GNav(
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[100]!,
+              gap: 4,
+              activeColor: Colors.black,
+              iconSize: 24,
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              duration: Duration(milliseconds: 400),
+              tabBackgroundColor: Colors.grey[100]!,
+              color: Colors.black,
+              tabs: [
+                GButton(
+                  icon: LineIcons.home,
+                  text: 'Home',
+                  // onPressed: () {
+                  //   setState(() {
+                  //     _selectedIndex = 0;
+                  //   });
+                  // },
+                ),
+                GButton(
+                  icon: LineIcons.heart,
+                  text: 'Likes',
+                  // onPressed: () {
+                  //   setState(() {
+                  //     _selectedIndex = 1;
+                  //   });
+                  // },
+                ),
+                GButton(
+                  icon: LineIcons.plus,
+                  text: 'Sell',
+                  // onPressed: () {
+                  //   setState(() {
+                  //     _selectedIndex = 2;
+                  //   });
+                  // },
+                ),
+                GButton(
+                  icon: LineIcons.rocketChat,
+                  text: 'Chat',
+                  // onPressed: () {
+                  //   setState(() {
+                  //     _selectedIndex = 3;
+                  //   });
+                  // },
+                ),
+                GButton(
+                  icon: LineIcons.user,
+                  text: 'Profile',
+                  // onPressed: () {
+                  //   setState(() {
+                  //     _selectedIndex = 4;
+                  //   });
+                  // },
+                ),
+              ],
+              selectedIndex: _selectedIndex,
+              onTabChange: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+            ),
           ),
         ),
+      ),
     );
   }
 }

@@ -90,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
                               _formkey.currentState!.save();
-                              Navigator.pushNamed(context, '/accounts');
+                              Navigator.pushNamed(context, '/home');
                             } else {
                               setState(() {
                                 _autovalidate = AutovalidateMode.always;
