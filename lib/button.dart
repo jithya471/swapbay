@@ -1,38 +1,45 @@
 import 'package:flutter/material.dart';
 
-class button extends StatelessWidget {
-  button({required this.buttontext});
-  Text buttontext;
+class MyElevatedButton extends StatelessWidget {
+  final BorderRadiusGeometry? borderRadius;
+  final double? width;
+  final double height;
+  final Gradient gradient;
+  final VoidCallback? onPressed;
+  final Widget child;
+
+  const MyElevatedButton({
+    Key? key,
+    required this.onPressed,
+    required this.child,
+    this.borderRadius,
+    this.width,
+    this.height = 44.0,
+    this.gradient = const LinearGradient(colors: [
+      Color.fromARGB(255, 199, 120, 46),
+      Color.fromARGB(255, 181, 63, 63)
+    ]),
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final borderRadius = this.borderRadius ?? BorderRadius.circular(0);
     return Container(
-        height: 50,
-        width: 100,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          gradient: LinearGradient(colors: [
-            Color.fromARGB(255, 104, 240, 240),
-            Color.fromARGB(255, 22, 236, 201)
-          ]),
-          border: Border.all(
-            color: Color(0xff6EEDED),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromARGB(255, 92, 238, 238),
-              blurRadius: 10.0, // soften the shadow
-              spreadRadius: 0.1, //extend the shadow
-              offset: Offset(
-                2.0, // Move to right 5  horizontally
-                2.0,
-                // Move to bottom 5 Vertically
-              ),
-            )
-          ],
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        gradient: gradient,
+        borderRadius: borderRadius,
+      ),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          shape: RoundedRectangleBorder(borderRadius: borderRadius),
         ),
-        child: Center(
-          child: buttontext,
-        ));
+        child: child,
+      ),
+    );
   }
 }

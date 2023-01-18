@@ -8,6 +8,7 @@
 /// video.
 
 import 'package:flutter/material.dart';
+import 'package:swapbay/accounts.dart';
 import 'package:swapbay/home.dart';
 import 'package:swapbay/register.dart';
 import 'package:swapbay/splashScreen.dart';
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/splashscreen': (context) => SplashScreen(),
         '/register': (context) => RegisterPage(),
-        '/home':(context) => HomePage()
+        '/home':(context) => HomePage(),
+        '/accounts':(context) => AccountsPage(),
       },
     );
   }
