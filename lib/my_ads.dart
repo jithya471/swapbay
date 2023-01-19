@@ -31,13 +31,7 @@ class _MyAdsState extends State<MyAds> {
           child: Column(
             children: [
               TabBar(
-                  indicator: ShapeDecoration(
-                      shape: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: primaryColor,
-                              width: 4.0,
-                              style: BorderStyle.solid)),
-                      ),
+                  indicatorColor: primaryColor,
                   labelColor: Colors.white,
                   labelStyle: TextStyle(fontSize: 20),
                   unselectedLabelColor: Colors.white.withOpacity(0.6),
