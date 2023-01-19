@@ -8,6 +8,13 @@
 /// video.
 
 import 'package:flutter/material.dart';
+import 'package:swapbay/Forms/bikes.dart';
+import 'package:swapbay/Forms/car.dart';
+import 'package:swapbay/Forms/electronics.dart';
+import 'package:swapbay/Forms/jobs.dart';
+import 'package:swapbay/Forms/mobiles.dart';
+import 'package:swapbay/Forms/properties.dart';
+import 'package:swapbay/Forms/services.dart';
 import 'package:swapbay/accounts.dart';
 import 'package:swapbay/bottomNavigation.dart';
 import 'package:swapbay/edit.dart';
@@ -38,6 +45,13 @@ class MyApp extends StatelessWidget {
         // '/accounts': (context) => AccountsPage(),
         '/settings': (context) => Settings(),
         '/edit': (context) => Edit(),
+        '/electronics':(context) => Electronics(),
+        '/bikes':(context) => Bikes(),
+        '/cars':(context) => Car(),
+        '/jobs':(context) => Jobs(),
+        '/mobiles':(context) => Mobiles(),
+        '/properties':(context) => Properties(),
+        '/services':(context) => Services()
       },
     );
   }

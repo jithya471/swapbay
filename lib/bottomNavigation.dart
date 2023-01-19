@@ -4,8 +4,9 @@ import 'package:line_icons/line_icons.dart';
 import 'package:swapbay/accounts.dart';
 import 'package:swapbay/chat.dart';
 import 'package:swapbay/home.dart';
-import 'package:swapbay/myads.dart';
 import 'package:swapbay/sell.dart';
+
+import 'my_ads.dart';
 
 void main() => runApp(MaterialApp(
     builder: (context, child) {
@@ -73,47 +74,27 @@ class _ExampleState extends State<Example> {
                 GButton(
                   icon: LineIcons.home,
                   text: 'Home',
-                  // onPressed: () {
-                  //   setState(() {
-                  //     _selectedIndex = 0;
-                  //   });
-                  // },
+                  
                 ),
                 GButton(
                   icon: LineIcons.heart,
                   text: 'Likes',
-                  // onPressed: () {
-                  //   setState(() {
-                  //     _selectedIndex = 1;
-                  //   });
-                  // },
+                  
                 ),
                 GButton(
                   icon: LineIcons.plus,
                   text: 'Sell',
-                  // onPressed: () {
-                  //   setState(() {
-                  //     _selectedIndex = 2;
-                  //   });
-                  // },
+                  
                 ),
                 GButton(
                   icon: LineIcons.rocketChat,
                   text: 'Chat',
-                  // onPressed: () {
-                  //   setState(() {
-                  //     _selectedIndex = 3;
-                  //   });
-                  // },
+                  
                 ),
                 GButton(
                   icon: LineIcons.user,
                   text: 'Profile',
-                  // onPressed: () {
-                  //   setState(() {
-                  //     _selectedIndex = 4;
-                  //   });
-                  // },
+                  
                 ),
               ],
               selectedIndex: _selectedIndex,
