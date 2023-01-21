@@ -16,7 +16,6 @@ class _MyAdsState extends State<MyAds> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
           centerTitle: true,
           leading: Container(),

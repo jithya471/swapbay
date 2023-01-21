@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:swapbay/body.dart';
 import 'package:swapbay/button.dart';
 import 'package:swapbay/constants.dart';
+import 'package:swapbay/settings.dart';
+
+import 'textfieldStyle.dart';
 
 class AccountsPage extends StatefulWidget {
   const AccountsPage({super.key});
@@ -11,113 +15,173 @@ class AccountsPage extends StatefulWidget {
 }
 
 class _AccountsPageState extends State<AccountsPage> {
+  String? gender;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(FontAwesomeIcons.angleLeft),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          flexibleSpace:
+              Container(decoration: BoxDecoration(gradient: primary)),
+          title: Text(
+            'About',
+            style: TextStyle(color: Colors.white),
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Settings()));
+                },
+                icon: Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                ))
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 100,),
+              Stack(children: [
                 Container(
-                  width: double.infinity,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Stack(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                    BoxShadow(
+                        blurRadius: 10,
+                        color: secondaryColor.withOpacity(0.4),
+                        spreadRadius: 2,
+                        offset: Offset(0, 10))
+                  ]),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: Image.asset(
+                        'assets/user.jpg',
+                      )),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(60, 60, 0, 0),
+                  decoration:
+                      BoxDecoration(shape: BoxShape.circle, gradient: primary),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      FontAwesomeIcons.pen,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                  ),
+                ),
+              ]),
+              SizedBox(
+                height: 20,
+              ),
+              Card(
+                child: Form(
+                    child: Column(
+                  children: [
+                    EditTextfield(
+                      label: 'FULL NAME',
+                      hintText: 'JITHYA ANAND',
+                    ),
+                    EditTextfield(
+                      label: 'E-MAIL',
+                      hintText: 'jithya@gamil.com',
+                    ),
+                    EditTextfield(
+                      label: 'MOBILE',
+                      hintText: '+91 8946887465',
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
                         children: [
-                          Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(50),
-                                child: Image.asset(
-                                  'assets/user.jpg',
-                                )),
+                          Text(
+                            textAlign: TextAlign.start,
+                            'GENDER',
+                            style: TextStyle(color: primaryColor),
                           ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(60, 60, 0, 0),
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.black),
-                            child: MyElevatedButton(
-                              borderRadius: BorderRadius.circular(50),
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/edit');
-                              },
-                              child: Icon(
-                                FontAwesomeIcons.pen,
-                                color: Colors.white,
-                                size: 20,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Radio(
+                                        activeColor: primaryColor,
+                                        value: 'male',
+                                        groupValue: gender,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            gender = value.toString();
+                                          });
+                                        }),
+                                    Expanded(
+                                      child: Text('MALE'),
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Radio(
+                                        activeColor: primaryColor,
+                                        value: 'female',
+                                        groupValue: gender,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            gender = value.toString();
+                                          });
+                                        }),
+                                    Expanded(child: Text('FEMALE'))
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Radio(
+                                        activeColor: primaryColor,
+                                        value: 'other',
+                                        groupValue: gender,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            gender = value.toString();
+                                          });
+                                        }),
+                                    Expanded(child: Text('OTHER'))
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          'NAME',
-                          style: TextStyle(color: Colors.white, fontSize: 30),
-                        ),
-                      ),
-                    ],
+                    ),
+                  ],
+                )),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              MyElevatedButton(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('SAVE'),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/settings');
-                  },
-                  child: Card(
-                    elevation: 10,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Container(
-                        width: double.infinity,
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Settings',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                              Icon(
-                                FontAwesomeIcons.angleRight,
-                                color: Colors.white,
-                                size: 15,
-                              )
-                            ],
-                          ),
-                        )),
-                    color: Color(0xff1c1825),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                MyElevatedButton(
-                    borderRadius: BorderRadius.circular(20),
-                    onPressed: () {},
-                    child: Text(
-                      'LOGOUT',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    )),
-              ],
-            ),
+                  borderRadius: BorderRadius.circular(50))
+            ],
           ),
         ),
       ),
