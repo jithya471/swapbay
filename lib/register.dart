@@ -19,80 +19,90 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 100,
-            width: 100,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: primary,
-            ),
-            child: Image.asset(
-              'assets/logo.png',
-              fit: BoxFit.contain,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
-            child: Text(
-              'Register Here',
-              style: TextStyle(fontSize: 25, color: primaryColor),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Form(
-                key: _formkey,
-                autovalidateMode: _autovalidate,
-                child: Column(
-                  children: [
-                    TextfieldStyle(
-                      labeltext: 'Name',
-                      hintText: 'Enter your Name',
-                      errorMessage: 'Name field cannot be Blank',
-                      inputType: TextInputType.name,
+        body: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: primary,
                     ),
-                    TextfieldStyle(
-                      labeltext: 'Mobile',
-                      hintText: 'Enter your Mobile Number',
-                      errorMessage: 'Mobile field cannot be Blank',
-                      inputType: TextInputType.phone,
+                    child: Image.asset(
+                      'assets/logo.png',
+                      fit: BoxFit.contain,
                     ),
-                    SizedBox(
-                      height: 10,
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: kDefaultPadding),
+                    child: Text(
+                      'Register Here',
+                      style: TextStyle(fontSize: 25, color: primaryColor),
                     ),
-                    TextfieldStyle(
-                      labeltext: 'E-Mail',
-                      hintText: 'Enter your E-Mail',
-                      inputType: TextInputType.emailAddress,
-                    )
-                  ],
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
-            child: MyElevatedButton(
-              borderRadius: BorderRadius.circular(20),
-              onPressed: () {
-                if (_formkey.currentState!.validate()) {
-                  _formkey.currentState!.save();
-                  Navigator.pushNamed(context, '/home');
-                } else {
-                  setState(() {
-                    _autovalidate = AutovalidateMode.always;
-                  });
-                }
-              },
-              child: Text(
-                'Submit',
-                style: TextStyle(fontSize: 15),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Form(
+                        key: _formkey,
+                        autovalidateMode: _autovalidate,
+                        child: Column(
+                          children: [
+                            TextfieldStyle(
+                              labeltext: 'Name',
+                              hintText: 'Enter your Name',
+                              errorMessage: 'Name field cannot be Blank',
+                              inputType: TextInputType.name,
+                            ),
+                            TextfieldStyle(
+                              labeltext: 'Mobile',
+                              hintText: 'Enter your Mobile Number',
+                              errorMessage: 'Mobile field cannot be Blank',
+                              inputType: TextInputType.phone,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextfieldStyle(
+                              labeltext: 'E-Mail',
+                              hintText: 'Enter your E-Mail',
+                              inputType: TextInputType.emailAddress,
+                            )
+                          ],
+                        )),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: kDefaultPadding),
+                    child: MyElevatedButton(
+                      borderRadius: BorderRadius.circular(20),
+                      onPressed: () {
+                        if (_formkey.currentState!.validate()) {
+                          _formkey.currentState!.save();
+                          Navigator.pushNamed(context, '/home');
+                        } else {
+                          setState(() {
+                            _autovalidate = AutovalidateMode.always;
+                          });
+                        }
+                      },
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }

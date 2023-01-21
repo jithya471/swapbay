@@ -46,143 +46,149 @@ class _AccountsPageState extends State<AccountsPage> {
                 ))
           ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 100,),
-              Stack(children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
-                    BoxShadow(
-                        blurRadius: 10,
-                        color: secondaryColor.withOpacity(0.4),
-                        spreadRadius: 2,
-                        offset: Offset(0, 10))
+        body: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Stack(children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration:
+                          BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10,
+                            color: secondaryColor.withOpacity(0.4),
+                            spreadRadius: 2,
+                            offset: Offset(0, 10))
+                      ]),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.asset(
+                            'assets/user.jpg',
+                          )),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(60, 60, 0, 0),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, gradient: primary),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          FontAwesomeIcons.pen,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ),
+                    ),
                   ]),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.asset(
-                        'assets/user.jpg',
-                      )),
-                ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(60, 60, 0, 0),
-                  decoration:
-                      BoxDecoration(shape: BoxShape.circle, gradient: primary),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      FontAwesomeIcons.pen,
-                      color: Colors.white,
-                      size: 20,
-                    ),
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-              ]),
-              SizedBox(
-                height: 20,
-              ),
-              Card(
-                child: Form(
-                    child: Column(
-                  children: [
-                    EditTextfield(
-                      label: 'FULL NAME',
-                      hintText: 'JITHYA ANAND',
-                    ),
-                    EditTextfield(
-                      label: 'E-MAIL',
-                      hintText: 'jithya@gamil.com',
-                    ),
-                    EditTextfield(
-                      label: 'MOBILE',
-                      hintText: '+91 8946887465',
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            textAlign: TextAlign.start,
-                            'GENDER',
-                            style: TextStyle(color: primaryColor),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  Card(
+                    child: Form(
+                        child: Column(
+                      children: [
+                        EditTextfield(
+                          label: 'FULL NAME',
+                          hintText: 'JITHYA ANAND',
+                        ),
+                        EditTextfield(
+                          label: 'E-MAIL',
+                          hintText: 'jithya@gamil.com',
+                        ),
+                        EditTextfield(
+                          label: 'MOBILE',
+                          hintText: '+91 8946887465',
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
                             children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Radio(
-                                        activeColor: primaryColor,
-                                        value: 'male',
-                                        groupValue: gender,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            gender = value.toString();
-                                          });
-                                        }),
-                                    Expanded(
-                                      child: Text('MALE'),
-                                    )
-                                  ],
-                                ),
+                              Text(
+                                textAlign: TextAlign.start,
+                                'GENDER',
+                                style: TextStyle(color: primaryColor),
                               ),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Radio(
-                                        activeColor: primaryColor,
-                                        value: 'female',
-                                        groupValue: gender,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            gender = value.toString();
-                                          });
-                                        }),
-                                    Expanded(child: Text('FEMALE'))
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Radio(
-                                        activeColor: primaryColor,
-                                        value: 'other',
-                                        groupValue: gender,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            gender = value.toString();
-                                          });
-                                        }),
-                                    Expanded(child: Text('OTHER'))
-                                  ],
-                                ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        Radio(
+                                            activeColor: primaryColor,
+                                            value: 'male',
+                                            groupValue: gender,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                gender = value.toString();
+                                              });
+                                            }),
+                                        Expanded(
+                                          child: Text('MALE'),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        Radio(
+                                            activeColor: primaryColor,
+                                            value: 'female',
+                                            groupValue: gender,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                gender = value.toString();
+                                              });
+                                            }),
+                                        Expanded(child: Text('FEMALE'))
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        Radio(
+                                            activeColor: primaryColor,
+                                            value: 'other',
+                                            groupValue: gender,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                gender = value.toString();
+                                              });
+                                            }),
+                                        Expanded(child: Text('OTHER'))
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              MyElevatedButton(
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('SAVE'),
+                        ),
+                      ],
+                    )),
                   ),
-                  borderRadius: BorderRadius.circular(50))
-            ],
-          ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  MyElevatedButton(
+                      onPressed: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('SAVE'),
+                      ),
+                      borderRadius: BorderRadius.circular(50))
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
