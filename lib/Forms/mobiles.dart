@@ -33,75 +33,6 @@ class _MobilesState extends State<Mobiles> {
                 Form(
                   child: Column(
                     children: [
-                      EditTextfield(
-                        label: 'Brand',
-                      ),
-                      EditTextfield(
-                        label: 'Year',
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: kDefaultPadding / 2,
-                                  horizontal: kDefaultPadding / 2),
-                              child: Text(
-                                textAlign: TextAlign.start,
-                                'Transmission',
-                                style: TextStyle(color: primaryColor),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Radio(
-                                          activeColor: primaryColor,
-                                          value: 'automatic',
-                                          groupValue: 'transmission',
-                                          onChanged: (value) {
-                                            setState(() {
-                                              // transmission = value.toString();
-                                            });
-                                          }),
-                                      Expanded(
-                                        child: Text(
-                                          'AUTOMATIC',
-                                          style: TextStyle(color: primaryColor),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Radio(
-                                          activeColor: primaryColor,
-                                          value: 'manual',
-                                          groupValue: 'transmission',
-                                          onChanged: (value) {
-                                            setState(() {
-                                              // transmission = value.toString();
-                                            });
-                                          }),
-                                      Expanded(
-                                          child: Text(
-                                        'MANUAL',
-                                        style: TextStyle(color: primaryColor),
-                                      ))
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: kDefaultPadding / 2,
@@ -110,18 +41,18 @@ class _MobilesState extends State<Mobiles> {
                           child: Stack(
                             children: [
                               Text(
-                                "Fuel",
+                                "Brand*",
                                 style: TextStyle(
                                   color: primaryColor,
                                 ), // adjust your title as you required
                               ),
                               DropDownTextField(
                                   dropDownIconProperty:
-                                      IconProperty(color: primaryColor),
+                                  IconProperty(color: primaryColor),
                                   textFieldDecoration: InputDecoration(
                                       enabledBorder: UnderlineInputBorder(
                                           borderSide:
-                                              BorderSide(color: primaryColor))),
+                                          BorderSide(color: primaryColor))),
                                   listSpace: 20,
                                   listPadding: ListPadding(top: 20),
                                   enableSearch: false,
@@ -133,57 +64,66 @@ class _MobilesState extends State<Mobiles> {
                                     }
                                   },
                                   dropDownList: const [
+
                                     DropDownValueModel(
-                                        name: 'CNG & Hybrids',
-                                        value: "cng_hybrids"),
+                                        name: 'iPhones',
+                                        value: "iphones"),
                                     DropDownValueModel(
-                                        name: 'Diesel', value: "diesel"),
+                                        name: 'Samsung', value: "samsung"),
                                     DropDownValueModel(
-                                        name: 'Electric', value: "electric"),
+                                        name: 'Mi', value: "mi"),
                                     DropDownValueModel(
-                                        name: 'LPG', value: "lpg"),
+                                        name: 'Vivo', value: "Vivo"),
                                     DropDownValueModel(
-                                        name: 'Petrol', value: "Petrol"),
+                                        name: 'Oppo', value: "oppo"),
+                                    DropDownValueModel(
+                                        name: 'Realme', value: "realme"),
+                                    DropDownValueModel(
+                                        name: 'Asus', value: "Asus"),
+                                    DropDownValueModel(
+                                        name: 'Blackberry', value: "blackberry"),
                                   ],
                                   listTextStyle:
-                                      const TextStyle(color: Colors.red),
-                                  dropDownItemCount: 8,
-                                  onChanged: (val) {}),
+                                  const TextStyle(color: Colors.red),
+                                  dropDownItemCount: 8, onChanged: (val) {}),
                             ],
                           ),
                         ),
                       ),
-                      EditTextfield(
-                        label: 'KM driven',
-                      ),
-                      EditTextfield(
-                        label: 'No. of Owners',
-                      ),
-                      EditTextfield(
-                        label: 'Ad TiTle',
-                      ),
-                      EditTextfield(
-                        label: 'Describe What you are Selling',
-                      ),
-                      EditTextfield(
-                        label: 'Price',
-                      ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
-                  child: MyElevatedButton(
-                    onPressed: () {},
-                    child: Text('Post Now'),
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                )
+                EditTextfield(
+                  label: 'Title',
+                ),
+                EditTextfield(
+                  label: 'Describe what you are selling',
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(kDefaultPadding),
+                      child: MyElevatedButton(
+                        onPressed: () {},
+                        child: Text('Post Now'),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(kDefaultPadding),
+                      child: MyElevatedButton(
+                        onPressed: () {},
+                        child: Text('Upload Photos'),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
         ),
       ),
-    ));
+    ),);
   }
 }

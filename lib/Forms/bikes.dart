@@ -35,75 +35,6 @@ class _BikesState extends State<Bikes> {
                 Form(
                   child: Column(
                     children: [
-                      EditTextfield(
-                        label: 'Brand',
-                      ),
-                      EditTextfield(
-                        label: 'Year',
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: kDefaultPadding / 2,
-                                  horizontal: kDefaultPadding / 2),
-                              child: Text(
-                                textAlign: TextAlign.start,
-                                'Transmission',
-                                style: TextStyle(color: primaryColor),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Radio(
-                                          activeColor: primaryColor,
-                                          value: 'automatic',
-                                          groupValue: 'transmission',
-                                          onChanged: (value) {
-                                            setState(() {
-                                              // transmission = value.toString();
-                                            });
-                                          }),
-                                      Expanded(
-                                        child: Text(
-                                          'AUTOMATIC',
-                                          style: TextStyle(color: primaryColor),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Radio(
-                                          activeColor: primaryColor,
-                                          value: 'manual',
-                                          groupValue: 'transmission',
-                                          onChanged: (value) {
-                                            setState(() {
-                                              // transmission = value.toString();
-                                            });
-                                          }),
-                                      Expanded(
-                                          child: Text(
-                                        'MANUAL',
-                                        style: TextStyle(color: primaryColor),
-                                      ))
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: kDefaultPadding / 2,
@@ -112,7 +43,7 @@ class _BikesState extends State<Bikes> {
                           child: Stack(
                             children: [
                               Text(
-                                "Fuel",
+                                "Brand*",
                                 style: TextStyle(
                                   color: primaryColor,
                                 ), // adjust your title as you required
@@ -136,51 +67,63 @@ class _BikesState extends State<Bikes> {
                                   },
                                   dropDownList: const [
                                     DropDownValueModel(
-                                        name: 'CNG & Hybrids',
-                                        value: "cng_hybrids"),
+                                        name: 'Bajaj',
+                                        value: "bajaj"),
                                     DropDownValueModel(
-                                        name: 'Diesel', value: "diesel"),
+                                        name: 'Hero', value: "hero"),
                                     DropDownValueModel(
-                                        name: 'Electric', value: "electric"),
+                                        name: 'Hero Honda', value: "hero honda"),
                                     DropDownValueModel(
-                                        name: 'LPG', value: "lpg"),
+                                        name: 'Honda', value: "honda"),
                                     DropDownValueModel(
-                                        name: 'Petrol', value: "Petrol"),
+                                        name: 'KTM', value: "ktm"),
+                                    DropDownValueModel(
+                                        name: 'Suzuki', value: "suzuki"),
+                                    DropDownValueModel(
+                                        name: 'TVS', value: "tvs"),
+                                    DropDownValueModel(
+                                        name: 'Yamaha', value: "yamaha"),
                                   ],
                                   listTextStyle:
                                       const TextStyle(color: Colors.red),
-                                  dropDownItemCount: 8,
-                                  onChanged: (val) {}),
-                            ],
+                                  dropDownItemCount: 8, onChanged: (val) {}),
+                          ],
+
                           ),
                         ),
-                      ),
-                      EditTextfield(
-                        label: 'KM driven',
-                      ),
-                      EditTextfield(
-                        label: 'No. of Owners',
-                      ),
-                      EditTextfield(
-                        label: 'Ad TiTle',
-                      ),
-                      EditTextfield(
-                        label: 'Describe What you are Selling',
-                      ),
-                      EditTextfield(
-                        label: 'Price',
                       ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
-                  child: MyElevatedButton(
-                    onPressed: () {},
-                    child: Text('Post Now'),
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                )
+                EditTextfield(
+                  label: 'Year',
+                ),
+                EditTextfield(
+                  label: 'KM Driven',
+                ),
+                EditTextfield(
+                  label: 'Describe what you are selling',
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(kDefaultPadding),
+                      child: MyElevatedButton(
+                        onPressed: () {},
+                        child: Text('Post Now'),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(kDefaultPadding),
+                      child: MyElevatedButton(
+                        onPressed: () {},
+                        child: Text('Upload Photos'),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                    )
+                  ],
+                ),
               ],
             ),
           ),

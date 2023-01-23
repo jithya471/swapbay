@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swapbay/accounts.dart';
 import 'package:swapbay/body.dart';
+import 'package:swapbay/chat.dart';
 import 'package:swapbay/constants.dart';
 import 'package:path/path.dart';
 import 'package:swapbay/my_ads.dart';
@@ -61,7 +62,7 @@ class NavigationDrawer extends StatelessWidget {
           InkWell(
             onTap: (() {
               Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => MyAds()));
+                  .push(MaterialPageRoute(builder: (context) => MyAds()));
             }),
             child: SideBarList(
               iconData: Icon(FontAwesomeIcons.heart, color: primaryColor),
@@ -72,16 +73,25 @@ class NavigationDrawer extends StatelessWidget {
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: Divider(color: primaryColor),
           ),
-          SideBarList(
-            iconData: Icon(Icons.upload_file, color: primaryColor),
-            title: 'MY POST',
+          InkWell(
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => MyAds()));
+            },
+            child: SideBarList(
+              iconData: Icon(Icons.upload_file, color: primaryColor),
+              title: 'MY POST',
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: Divider(color: primaryColor),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ChatScreen()));
+            },
             child: SideBarList(
               iconData: Icon(
                 FontAwesomeIcons.comment,

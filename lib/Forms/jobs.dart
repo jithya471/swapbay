@@ -36,75 +36,6 @@ class _JobsState extends State<Jobs> {
                 Form(
                   child: Column(
                     children: [
-                      EditTextfield(
-                        label: 'Brand',
-                      ),
-                      EditTextfield(
-                        label: 'Year',
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: kDefaultPadding / 2,
-                                  horizontal: kDefaultPadding / 2),
-                              child: Text(
-                                textAlign: TextAlign.start,
-                                'Transmission',
-                                style: TextStyle(color: primaryColor),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Radio(
-                                          activeColor: primaryColor,
-                                          value: 'automatic',
-                                          groupValue: 'transmission',
-                                          onChanged: (value) {
-                                            setState(() {
-                                              // transmission = value.toString();
-                                            });
-                                          }),
-                                      Expanded(
-                                        child: Text(
-                                          'AUTOMATIC',
-                                          style: TextStyle(color: primaryColor),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Radio(
-                                          activeColor: primaryColor,
-                                          value: 'manual',
-                                          groupValue: 'transmission',
-                                          onChanged: (value) {
-                                            setState(() {
-                                              // transmission = value.toString();
-                                            });
-                                          }),
-                                      Expanded(
-                                          child: Text(
-                                        'MANUAL',
-                                        style: TextStyle(color: primaryColor),
-                                      ))
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: kDefaultPadding / 2,
@@ -113,7 +44,7 @@ class _JobsState extends State<Jobs> {
                           child: Stack(
                             children: [
                               Text(
-                                "Fuel",
+                                "Salary Period",
                                 style: TextStyle(
                                   color: primaryColor,
                                 ), // adjust your title as you required
@@ -137,16 +68,14 @@ class _JobsState extends State<Jobs> {
                                   },
                                   dropDownList: const [
                                     DropDownValueModel(
-                                        name: 'CNG & Hybrids',
-                                        value: "cng_hybrids"),
+                                        name: 'Hourly',
+                                        value: "hourly"),
                                     DropDownValueModel(
-                                        name: 'Diesel', value: "diesel"),
+                                        name: 'Monthly', value: "monthly"),
                                     DropDownValueModel(
-                                        name: 'Electric', value: "electric"),
+                                        name: 'Weekly', value: "weekly"),
                                     DropDownValueModel(
-                                        name: 'LPG', value: "lpg"),
-                                    DropDownValueModel(
-                                        name: 'Petrol', value: "Petrol"),
+                                        name: 'Yearly', value: "yearly"),
                                   ],
                                   listTextStyle:
                                       const TextStyle(color: Colors.red),
@@ -156,20 +85,66 @@ class _JobsState extends State<Jobs> {
                           ),
                         ),
                       ),
-                      EditTextfield(
-                        label: 'KM driven',
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: kDefaultPadding / 2,
+                            horizontal: kDefaultPadding),
+                        child: Container(
+                          child: Stack(
+                            children: [
+                              Text(
+                                "Salary Period",
+                                style: TextStyle(
+                                  color: primaryColor,
+                                ), // adjust your title as you required
+                              ),
+                              DropDownTextField(
+                                  dropDownIconProperty:
+                                  IconProperty(color: primaryColor),
+                                  textFieldDecoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                          borderSide:
+                                          BorderSide(color: primaryColor))),
+                                  listSpace: 20,
+                                  listPadding: ListPadding(top: 20),
+                                  enableSearch: false,
+                                  validator: (value) {
+                                    if (value == null) {
+                                      return "Required field";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                  dropDownList: const [
+                                    DropDownValueModel(
+                                        name: 'Contract',
+                                        value: "contract"),
+                                    DropDownValueModel(
+                                        name: 'Full-time', value: "full-time"),
+                                    DropDownValueModel(
+                                        name: 'Part-time', value: "part-time"),
+                                    DropDownValueModel(
+                                        name: 'Temporary', value: "temporary"),
+                                  ],
+                                  listTextStyle:
+                                  const TextStyle(color: Colors.red),
+                                  dropDownItemCount: 8,
+                                  onChanged: (val) {}),
+                            ],
+                          ),
+                        ),
                       ),
                       EditTextfield(
-                        label: 'No. of Owners',
+                        label: 'Salary from ',
+                      ),
+                      EditTextfield(
+                        label: 'Salary to',
                       ),
                       EditTextfield(
                         label: 'Ad TiTle',
                       ),
                       EditTextfield(
                         label: 'Describe What you are Selling',
-                      ),
-                      EditTextfield(
-                        label: 'Price',
                       ),
                     ],
                   ),
@@ -181,12 +156,12 @@ class _JobsState extends State<Jobs> {
                     child: Text('Post Now'),
                     borderRadius: BorderRadius.circular(50),
                   ),
-                )
+                ),
               ],
             ),
           ),
         ),
       ),
-    ));
+    ),);
   }
 }
