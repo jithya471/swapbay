@@ -1,5 +1,6 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:swapbay/Forms/propertyImage.dart';
 import 'package:swapbay/button.dart';
 import 'package:swapbay/constants.dart';
 import 'package:swapbay/textfieldStyle.dart';
@@ -32,233 +33,29 @@ class _PropertiesState extends State<Properties> {
                 Form(
                   child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: kDefaultPadding / 2,
-                            horizontal: kDefaultPadding),
-                        child: Container(
-                          child: Stack(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  Icon(Icons .dehaze,color: Colors.pink,size: 20,),
-                                ],
-                              ),
-                              Text(
-                                "Type*",
-                                style: TextStyle(
-                                  color: primaryColor,
-                                ), // adjust your title as you required
-                              ),
-                              DropDownTextField(
-                                  dropDownIconProperty:
-                                  IconProperty(color: primaryColor),
-                                  textFieldDecoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: primaryColor))),
-                                  listSpace: 20,
-                                  listPadding: ListPadding(top: 20),
-                                  enableSearch: false,
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return "Required field";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  dropDownList: const [
-                                    DropDownValueModel(
-                                        name: 'Apartments',
-                                        value: "apartments"),
-                                    DropDownValueModel(
-                                        name: 'Builder Floors', value: "builder floors"),
-                                    DropDownValueModel(
-                                        name: 'Houses & Villas', value: "houses &villas"),
-                                  ],
-                                  listTextStyle:
-                                  const TextStyle(color: Colors.red),
-                                  dropDownItemCount: 8, onChanged: (val) {}),
-                            ],
-
-                          ),
-                        ),
+                      EditTextfield(
+                        label: 'Ad Title',
+                      ),
+                      EditTextfield(
+                        label: 'Describe What you are Selling',
+                      ),
+                      EditTextfield(
+                        label: 'Price',
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: kDefaultPadding / 2,
-                            horizontal: kDefaultPadding),
-                        child: Container(
-                          child: Stack(
-                            children: [
-                              Text(
-                                "BedRooms",
-                                style: TextStyle(
-                                  color: primaryColor,
-                                ), // adjust your title as you required
-                              ),
-                              DropDownTextField(
-                                  dropDownIconProperty:
-                                  IconProperty(color: primaryColor),
-                                  textFieldDecoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: primaryColor))),
-                                  listSpace: 20,
-                                  listPadding: ListPadding(top: 20),
-                                  enableSearch: false,
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return "Required field";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  dropDownList: const [
-                                    DropDownValueModel(
-                                        name: '1',
-                                        value: "1"),
-                                    DropDownValueModel(
-                                        name: '2', value: "2"),
-                                    DropDownValueModel(
-                                        name: '3', value: "3"),
-                                    DropDownValueModel(
-                                        name: '4+', value: "4+"),
-                                  ],
-                                  listTextStyle:
-                                  const TextStyle(color: Colors.red),
-                                  dropDownItemCount: 8, onChanged: (val) {}),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: kDefaultPadding / 2,
-                            horizontal: kDefaultPadding),
-                        child: Container(
-                          child: Stack(
-                            children: [
-                              Text(
-                                "BathRooms",
-                                style: TextStyle(
-                                  color: primaryColor,
-                                ), // adjust your title as you required
-                              ),
-                              DropDownTextField(
-                                  dropDownIconProperty:
-                                  IconProperty(color: primaryColor),
-                                  textFieldDecoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: primaryColor))),
-                                  listSpace: 20,
-                                  listPadding: ListPadding(top: 20),
-                                  enableSearch: false,
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return "Required field";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  dropDownList: const [
-                                    DropDownValueModel(
-                                        name: '1',
-                                        value: "1"),
-                                    DropDownValueModel(
-                                        name: '2', value: "2"),
-                                    DropDownValueModel(
-                                        name: '3', value: "3"),
-                                    DropDownValueModel(
-                                        name: '4+', value: "4+"),
-                                  ],
-                                  listTextStyle:
-                                  const TextStyle(color: Colors.red),
-                                  dropDownItemCount: 8, onChanged: (val) {}),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: kDefaultPadding / 2,
-                            horizontal: kDefaultPadding),
-                        child: Container(
-                          child: Stack(
-                            children: [
-                              Text(
-                                "Furnishing",
-                                style: TextStyle(
-                                  color: primaryColor,
-                                ), // adjust your title as you required
-                              ),
-                              DropDownTextField(
-                                  dropDownIconProperty:
-                                  IconProperty(color: primaryColor),
-                                  textFieldDecoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: primaryColor))),
-                                  listSpace: 20,
-                                  listPadding: ListPadding(top: 20),
-                                  enableSearch: false,
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return "Required field";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  dropDownList: const [
-                                    DropDownValueModel(
-                                        name: 'Furnished',
-                                        value: "furnished"),
-                                    DropDownValueModel(
-                                        name: 'SemiFurnished', value: "semifurnished"),
-                                    DropDownValueModel(
-                                        name: 'UnFurnished', value: "unfurnished"),
-                                  ],
-                                  listTextStyle:
-                                  const TextStyle(color: Colors.red),
-                                  dropDownItemCount: 8, onChanged: (val) {}),
-                            ],
-                          ),
+                        padding: const EdgeInsets.all(kDefaultPadding),
+                        child: MyElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => PropertImage()));
+                          },
+                          child: Text('Next'),
+                          borderRadius: BorderRadius.circular(50),
                         ),
                       ),
                     ],
                   ),
-                ),
-                EditTextfield(
-                  label: 'Maintenance',
-                ),
-                EditTextfield(
-                  label: 'Total Floors',
-                ),
-                EditTextfield(
-                  label: 'Car Parking',
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      child: MyElevatedButton(
-                        onPressed: () {},
-                        child: Text('Post Now'),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      child: MyElevatedButton(
-                        onPressed: () {},
-                        child: Text('Upload Photos'),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    )
-                  ],
-                ),
+                )
               ],
             ),
           ),

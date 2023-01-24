@@ -33,10 +33,7 @@ class Details extends StatelessWidget {
           Navigator.pop(context);
         },
       ),
-      title: Text(
-        'Back'.toUpperCase(),
-        style: TextStyle(color: Colors.black),
-      ),
+     
       actions: [
         IconButton(
             onPressed: () {},

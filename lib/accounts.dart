@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swapbay/body.dart';
 import 'package:swapbay/button.dart';
 import 'package:swapbay/constants.dart';
 import 'package:swapbay/settings.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'bottomsheetImage.dart';
 import 'textfieldStyle.dart';
 
 class AccountsPage extends StatefulWidget {
@@ -15,6 +19,9 @@ class AccountsPage extends StatefulWidget {
 }
 
 class _AccountsPageState extends State<AccountsPage> {
+  File? image;
+ 
+
   String? gender;
   @override
   Widget build(BuildContext context) {
@@ -76,7 +83,12 @@ class _AccountsPageState extends State<AccountsPage> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, gradient: primary),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: _modalBottomSheetMenu(context));
+                          // pickImage();
+                        },
                         icon: Icon(
                           FontAwesomeIcons.pen,
                           color: Colors.white,
@@ -193,4 +205,13 @@ class _AccountsPageState extends State<AccountsPage> {
       ),
     );
   }
+}
+
+
+_modalBottomSheetMenu(context) {
+  showModalBottomSheet(
+      context: context,
+      builder: (builder) {
+        return bottomsheetImage();
+      });
 }

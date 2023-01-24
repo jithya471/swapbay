@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swapbay/accounts.dart';
 import 'package:swapbay/body.dart';
 import 'package:swapbay/chat.dart';
 import 'package:swapbay/constants.dart';
 import 'package:path/path.dart';
+import 'package:swapbay/login.dart';
 import 'package:swapbay/my_ads.dart';
 
 class MyHome extends StatelessWidget {
@@ -107,7 +109,9 @@ class NavigationDrawer extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              showAlertDialog(context);
+            },
             child: SideBarList(
               iconData: Icon(Icons.logout, color: primaryColor),
               title: 'LOGOUT',
@@ -190,4 +194,45 @@ class SideBarHeader extends StatelessWidget {
       ],
     );
   }
+}
+
+showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = Padding(
+     padding: EdgeInsets.only(right: kDefaultPadding),
+    child: InkWell(
+      child: Text(
+        "No",
+        style: TextStyle(fontSize: 15),
+      ),
+      onTap: () {
+        Navigator.of(context, rootNavigator: true).pop('dialog');
+      },
+    ),
+  );
+  Widget continueButton = Padding(
+    padding: EdgeInsets.only(right: kDefaultPadding),
+    child: InkWell(
+      child: Text("Yes", style: TextStyle(fontSize: 15)),
+      onTap: () {
+        SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+      },
+    ),
+  );
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("AlertDialog"),
+    content: Text("Are you sure you want to Logout?"),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

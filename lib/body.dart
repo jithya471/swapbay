@@ -57,8 +57,8 @@ class Body extends StatelessWidget {
                 },
               ),
               Positioned(
-                bottom: 0,
-                right: 0,
+                bottom: 20,
+                right: 20,
                 child: FloatingActionButton.extended(
                   backgroundColor: primaryColor,
                   foregroundColor: Colors.white,
@@ -67,7 +67,7 @@ class Body extends StatelessWidget {
                         .push(MaterialPageRoute(builder: (context) => Sell()));
                   },
                   icon: Icon(Icons.add),
-                  label: Text('SELL'),
+                  label: Text('SELL', style: TextStyle(fontSize: 15),),
                 ),
               )
             ],

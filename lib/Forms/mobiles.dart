@@ -1,5 +1,6 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:swapbay/Forms/mobileImage.dart';
 import 'package:swapbay/button.dart';
 import 'package:swapbay/constants.dart';
 
@@ -99,25 +100,19 @@ class _MobilesState extends State<Mobiles> {
                 EditTextfield(
                   label: 'Describe what you are selling',
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      child: MyElevatedButton(
-                        onPressed: () {},
-                        child: Text('Post Now'),
-                        borderRadius: BorderRadius.circular(50),
+                EditTextfield(
+                        label: 'Price',
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      child: MyElevatedButton(
-                        onPressed: () {},
-                        child: Text('Upload Photos'),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(kDefaultPadding),
+                  child: MyElevatedButton(
+                    onPressed: () {
+                       Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MobileImage()));
+                    },
+                    child: Text('Next'),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
                 ),
               ],
             ),

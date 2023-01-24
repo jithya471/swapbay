@@ -2,6 +2,7 @@ import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:swapbay/Forms/bikesImage.dart';
 import 'package:swapbay/button.dart';
 import 'package:swapbay/textfieldStyle.dart';
 
@@ -31,6 +32,7 @@ class _BikesState extends State<Bikes> {
           padding: const EdgeInsets.all(8.0),
           child: Card(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Form(
                   child: Column(
@@ -67,12 +69,12 @@ class _BikesState extends State<Bikes> {
                                   },
                                   dropDownList: const [
                                     DropDownValueModel(
-                                        name: 'Bajaj',
-                                        value: "bajaj"),
+                                        name: 'Bajaj', value: "bajaj"),
                                     DropDownValueModel(
                                         name: 'Hero', value: "hero"),
                                     DropDownValueModel(
-                                        name: 'Hero Honda', value: "hero honda"),
+                                        name: 'Hero Honda',
+                                        value: "hero honda"),
                                     DropDownValueModel(
                                         name: 'Honda', value: "honda"),
                                     DropDownValueModel(
@@ -86,9 +88,9 @@ class _BikesState extends State<Bikes> {
                                   ],
                                   listTextStyle:
                                       const TextStyle(color: Colors.red),
-                                  dropDownItemCount: 8, onChanged: (val) {}),
-                          ],
-
+                                  dropDownItemCount: 8,
+                                  onChanged: (val) {}),
+                            ],
                           ),
                         ),
                       ),
@@ -104,25 +106,19 @@ class _BikesState extends State<Bikes> {
                 EditTextfield(
                   label: 'Describe what you are selling',
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      child: MyElevatedButton(
-                        onPressed: () {},
-                        child: Text('Post Now'),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      child: MyElevatedButton(
-                        onPressed: () {},
-                        child: Text('Upload Photos'),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    )
-                  ],
+                EditTextfield(
+                  label: 'Price',
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(kDefaultPadding),
+                  child: MyElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => BikeImage()));
+                    },
+                    child: Text('Next'),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
                 ),
               ],
             ),

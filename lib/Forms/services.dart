@@ -1,5 +1,6 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:swapbay/Forms/servicesImage.dart';
 import 'package:swapbay/button.dart';
 import 'package:swapbay/constants.dart';
 import 'package:swapbay/textfieldStyle.dart';
@@ -36,7 +37,7 @@ class _ServicesState extends State<Services> {
                         label: 'Ad TiTle',
                       ),
                       EditTextfield(
-                        label: 'Describe What you are Selling',
+                        label: 'Describe What are your Services',
                       ),
                     ],
                   ),
@@ -44,8 +45,11 @@ class _ServicesState extends State<Services> {
                 Padding(
                   padding: const EdgeInsets.all(kDefaultPadding),
                   child: MyElevatedButton(
-                    onPressed: () {},
-                    child: Text('Post Now'),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => ServicesImage()));
+                    },
+                    child: Text('Next'),
                     borderRadius: BorderRadius.circular(50),
                   ),
                 )

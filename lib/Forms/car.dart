@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:swapbay/button.dart';
 import 'package:swapbay/constants.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:swapbay/demo.dart';
 import '../textfieldStyle.dart';
 
 class Car extends StatefulWidget {
@@ -13,6 +17,20 @@ class Car extends StatefulWidget {
 
 class _CarState extends State<Car> {
   String? transmission;
+  // late File imageFile;
+
+  // final ImagePicker imagePicker = ImagePicker();
+  //     List<XFile>? imageFileList = [];
+
+  //     void selectImages() async {
+  //        final List<XFile>? selectedImages = await
+  //               imagePicker.pickMultiImage();
+  //          if (selectedImages!.isNotEmpty) {
+  //             imageFileList!.addAll(selectedImages);
+  //          }
+  //         print("Image List Length:" + imageFileList!.length.toString());
+  //         setState((){});
+  //     }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -174,8 +192,11 @@ class _CarState extends State<Car> {
                 Padding(
                   padding: const EdgeInsets.all(kDefaultPadding),
                   child: MyElevatedButton(
-                    onPressed: () {},
-                    child: Text('Post Now'),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MultiImage()));
+                    },
+                    child: Text('Next'),
                     borderRadius: BorderRadius.circular(50),
                   ),
                 )
