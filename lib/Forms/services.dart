@@ -34,7 +34,7 @@ class _ServicesState extends State<Services> {
                   child: Column(
                     children: [
                       EditTextfield(
-                        label: 'Ad TiTle',
+                        label: 'Ad Title',
                       ),
                       EditTextfield(
                         label: 'Describe What are your Services',

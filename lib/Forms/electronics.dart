@@ -37,7 +37,7 @@ class _ElectronicsState extends State<Electronics> {
                     child: Column(
                       children: [
                         EditTextfield(
-                          label: 'Ad TiTle',
+                          label: 'Ad Title',
                         ),
                         EditTextfield(
                           label: 'Describe What you are Selling',
