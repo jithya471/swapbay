@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swapbay/button.dart';
+import 'package:swapbay/login.dart';
 import 'package:swapbay/register.dart';
 import 'package:video_player/video_player.dart';
 
@@ -31,8 +32,8 @@ class _SplashScreenState extends State<SplashScreen> {
     _controller.play();
     await Future.delayed(Duration(seconds: 2));
 
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (BuildContext context) => RegisterPage()));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
   }
 
   @override

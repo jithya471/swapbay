@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:swapbay/Forms/bikes.dart';
 import 'package:swapbay/Forms/car.dart';
 import 'package:swapbay/Forms/electronics.dart';
@@ -15,6 +16,7 @@ import 'package:swapbay/settings.dart';
 import 'package:swapbay/splashScreen.dart';
 
 void main() {
+  
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -26,6 +28,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+     WidgetsFlutterBinding.ensureInitialized();
+  
+  // Than we setup preferred orientations,
+  // and only after it finished we run our app
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+     
     return MaterialApp(
       theme: ThemeData(primaryColor: Color.fromARGB(255, 230, 58, 58),
       scaffoldBackgroundColor: Colors.white,

@@ -19,29 +19,22 @@ class ChatAndCAll extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.amber, borderRadius: BorderRadius.circular(30)),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Icon(
-                FontAwesomeIcons.comment,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: kDefaultPadding / 2,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ChatScreen()));
-                },
-                child: Text(
-                  'Chat',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ],
+          TextButton.icon(
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ChatScreen()));
+            },
+            icon: Icon(
+              FontAwesomeIcons.comment,
+              color: Colors.white,
+            ),
+            label: Text(
+              'Chat',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
-          Spacer(),
           TextButton.icon(
               onPressed: () {
                 showAlertDialog(context);
@@ -67,7 +60,7 @@ showAlertDialog(BuildContext context) {
     child: InkWell(
       child: Text(
         "No",
-        style: TextStyle(fontSize: 15),
+        style: TextStyle(fontSize: 15, color: Colors.black),
       ),
       onTap: () {
         Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -79,7 +72,7 @@ showAlertDialog(BuildContext context) {
     child: InkWell(
       child: Text(
         "Yes",
-        style: TextStyle(fontSize: 15),
+        style: TextStyle(fontSize: 15, color: Colors.black),
       ),
       onTap: () {
         Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -91,8 +84,8 @@ showAlertDialog(BuildContext context) {
   );
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    title: Text("Call"),
-    content: Text("Are you sure you want to call?"),
+    title: Text("Call", style: TextStyle(color: Colors.black),),
+    content: Text("Are you sure you want to call?", style: TextStyle(color: Colors.black),),
     actions: [
       cancelButton,
       continueButton,

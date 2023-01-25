@@ -8,21 +8,19 @@ import 'package:swapbay/constants.dart';
 import 'package:path/path.dart';
 import 'package:swapbay/login.dart';
 import 'package:swapbay/my_ads.dart';
+import 'package:swapbay/mypost.dart';
 
 class MyHome extends StatelessWidget {
   const MyHome({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Scaffold(
-          drawer: NavigationDrawer(),
-          backgroundColor: primaryColor,
-          appBar: buildAppBar(context),
-          body: Body(),
-        ),
+    return SafeArea(
+      child: Scaffold(
+        drawer: NavigationDrawer(),
+        backgroundColor: primaryColor,
+        appBar: buildAppBar(context),
+        body: Body(),
       ),
     );
   }
@@ -78,7 +76,7 @@ class NavigationDrawer extends StatelessWidget {
           InkWell(
             onTap: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => MyAds()));
+                  .push(MaterialPageRoute(builder: (context) => MyPost()));
             },
             child: SideBarList(
               iconData: Icon(Icons.upload_file, color: primaryColor),
@@ -114,7 +112,7 @@ class NavigationDrawer extends StatelessWidget {
             },
             child: SideBarList(
               iconData: Icon(Icons.logout, color: primaryColor),
-              title: 'LOGOUT',
+              title: 'LOGOUT'
             ),
           ),
         ],
@@ -128,16 +126,27 @@ class NavigationDrawer extends StatelessWidget {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => AccountsPage()));
       },
-      child: Container(
-        decoration: BoxDecoration(gradient: primary),
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: SideBarHeader(
-            email: 'jithya@gmail.com',
-            name: 'JITHYA ANAND',
+      child: Stack(children: [
+        Container(
+          width: double.infinity,
+          decoration: BoxDecoration(gradient: primary),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: SideBarHeader(
+              email: 'jithya@gmail.com',
+              name: 'JITHYA ANAND',
+            ),
           ),
         ),
-      ),
+        Positioned(
+            right: 15,
+            bottom: 15,
+            child: Icon(
+              FontAwesomeIcons.pen,
+              color: Colors.white,
+              size: 20,
+            ))
+      ]),
     );
   }
 }
@@ -199,11 +208,11 @@ class SideBarHeader extends StatelessWidget {
 showAlertDialog(BuildContext context) {
   // set up the buttons
   Widget cancelButton = Padding(
-     padding: EdgeInsets.only(right: kDefaultPadding),
+    padding: EdgeInsets.only(right: kDefaultPadding),
     child: InkWell(
       child: Text(
         "No",
-        style: TextStyle(fontSize: 15),
+        style: TextStyle(fontSize: 15, color: Colors.black),
       ),
       onTap: () {
         Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -213,7 +222,7 @@ showAlertDialog(BuildContext context) {
   Widget continueButton = Padding(
     padding: EdgeInsets.only(right: kDefaultPadding),
     child: InkWell(
-      child: Text("Yes", style: TextStyle(fontSize: 15)),
+      child: Text("Yes", style: TextStyle(fontSize: 15, color: Colors.black)),
       onTap: () {
         SystemChannels.platform.invokeMethod('SystemNavigator.pop');
       },
@@ -221,8 +230,8 @@ showAlertDialog(BuildContext context) {
   );
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    title: Text("AlertDialog"),
-    content: Text("Are you sure you want to Logout?"),
+    title: Text("Logout", style: TextStyle(color: Colors.black),),
+    content: Text("Are you sure you want to Logout?", style: TextStyle(color: Colors.black),),
     actions: [
       cancelButton,
       continueButton,

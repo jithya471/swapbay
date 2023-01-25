@@ -96,7 +96,7 @@ class _DetailsBodyState extends State<DetailsBody> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height / 20,
+              height: MediaQuery.of(context).size.height / 55,
             ),
             ChatAndCAll()
           ],
