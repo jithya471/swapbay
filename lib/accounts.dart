@@ -142,7 +142,7 @@ class _AccountsPageState extends State<AccountsPage> {
                                               });
                                             }),
                                         Expanded(
-                                          child: Text('MALE'),
+                                          child: Text('MALE', style: TextStyle(color: kBlack),),
                                         )
                                       ],
                                     ),
@@ -159,7 +159,7 @@ class _AccountsPageState extends State<AccountsPage> {
                                                 gender = value.toString();
                                               });
                                             }),
-                                        Expanded(child: Text('FEMALE'))
+                                        Expanded(child: Text('FEMALE', style: TextStyle(color: kBlack)))
                                       ],
                                     ),
                                   ),
@@ -175,7 +175,7 @@ class _AccountsPageState extends State<AccountsPage> {
                                                 gender = value.toString();
                                               });
                                             }),
-                                        Expanded(child: Text('OTHER'))
+                                        Expanded(child: Text('OTHER', style: TextStyle(color: kBlack)))
                                       ],
                                     ),
                                   ),

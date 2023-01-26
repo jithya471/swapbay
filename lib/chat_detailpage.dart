@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swapbay/constants.dart';
 import 'package:swapbay/sendmenu_itemlist.dart';
 import 'chat_bubble.dart';
 import 'chat_message.dart';
@@ -36,12 +37,14 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
         context: context,
         builder: (context) {
           return Container(
+            height: MediaQuery.of(context).size.height / 6,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20), topLeft: Radius.circular(20)),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Center(
                   child: Container(
@@ -69,7 +72,10 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                             color: menuItems[index].color.shade400,
                           ),
                         ),
-                        title: Text(menuItems[index].text),
+                        title: Text(
+                          menuItems[index].text,
+                         style: TextStyle(color: primaryColor),
+                        ),
                       );
                     }),
               ],
@@ -127,6 +133,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   ),
                   Expanded(
                     child: TextField(
+                      style: TextStyle(color: Colors.black),
                       decoration: InputDecoration(
                           hintText: 'Type Message...',
                           hintStyle: TextStyle(color: Colors.grey.shade500),

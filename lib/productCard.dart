@@ -18,7 +18,7 @@ class ProductCard extends StatelessWidget {
     return Container(
       height: 160,
       margin: EdgeInsets.symmetric(
-          horizontal: kDefaultPadding, vertical: kDefaultPadding / 4),
+          horizontal: kDefaultPadding, ),
       // color: secondaryColor,
       child: InkWell(
         onTap: onPressed,
@@ -37,17 +37,18 @@ class ProductCard extends StatelessWidget {
             ),
           ),
           Positioned(
-              bottom: 3,
+              bottom: 2,
               right: 5,
               child: Hero(
                 tag: '${product.id}',
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                  height: 150,
-                  width: 150,
+                  height: 130,
+                  width: 130,
                   child: Image.asset(
                     product.imageList[0],
                     fit: BoxFit.contain,
+                    scale: 20,
                   ),
                 ),
               )),

@@ -40,14 +40,19 @@ class _ChatListState extends State<ChatList> {
                     backgroundImage: AssetImage(widget.image),
                     maxRadius: 30,
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height/20, width: MediaQuery.of(context).size.width/30),
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height / 20,
+                      width: MediaQuery.of(context).size.width / 30),
                   Expanded(
                     child: Container(
                       color: Colors.transparent,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(widget.text),
+                          Text(
+                            widget.text,
+                            style: TextStyle(color: Colors.black),
+                          ),
                           SizedBox(
                             height: 6,
                           ),

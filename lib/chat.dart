@@ -90,14 +90,20 @@ class _ChatScreenState extends State<ChatScreen> {
               PopupMenuItem(
                 child: Row(
                   children: [
-                    Text('Sell Chat'),
+                    Text(
+                      'Sell Chat',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ],
                 ),
               ),
               PopupMenuItem(
                 child: Row(
                   children: [
-                    Text('Buy Chat'),
+                    Text(
+                      'Buy Chat',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ],
                 ),
               ),
@@ -110,19 +116,21 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ListView.builder(
-                itemCount: chatUsers.length,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return ChatList(
-                    text: chatUsers[index].text,
-                    secondaryText: chatUsers[index].secondaryText,
-                    image: chatUsers[index].image,
-                    time: chatUsers[index].time,
-                    isMessageRead: (index == 0 || index == 3) ? true : false,
-                  );
-                }),
+            SafeArea(
+              child: ListView.builder(
+                  itemCount: chatUsers.length,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return ChatList(
+                      text: chatUsers[index].text,
+                      secondaryText: chatUsers[index].secondaryText,
+                      image: chatUsers[index].image,
+                      time: chatUsers[index].time,
+                      isMessageRead: (index == 0 || index == 3) ? true : false,
+                    );
+                  }),
+            ),
           ],
         ),
       ),
