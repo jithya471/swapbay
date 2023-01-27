@@ -10,8 +10,18 @@ import 'package:swapbay/login.dart';
 import 'package:swapbay/my_ads.dart';
 import 'package:swapbay/mypost.dart';
 
-class MyHome extends StatelessWidget {
+import 'loadingScreen.dart';
+import 'locationBottomsheet.dart';
+
+class MyHome extends StatefulWidget {
   const MyHome({super.key});
+
+  @override
+  State<MyHome> createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+  
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +43,25 @@ class MyHome extends StatelessWidget {
       centerTitle: true,
 
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.locationDot))
+        TextButton.icon(
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                builder: _locationmodalBottomSheetMenu(context));
+          },
+          icon: Icon(
+            FontAwesomeIcons.locationDot,
+            color: Colors.white,
+          ),
+          label: Text(
+            'tvm',
+            style: TextStyle(color: Colors.white),
+          ),
+        )
       ],
-      title: Text('Swapbay'),
+      title: Text(
+        'Swapbay',
+      ),
     );
   }
 }
@@ -111,9 +137,8 @@ class NavigationDrawer extends StatelessWidget {
               showAlertDialog(context);
             },
             child: SideBarList(
-              iconData: Icon(Icons.logout, color: primaryColor),
-              title: 'LOGOUT'
-            ),
+                iconData: Icon(Icons.logout, color: primaryColor),
+                title: 'LOGOUT'),
           ),
         ],
       ),
@@ -230,8 +255,14 @@ showAlertDialog(BuildContext context) {
   );
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    title: Text("Logout", style: TextStyle(color: Colors.black),),
-    content: Text("Are you sure you want to Logout?", style: TextStyle(color: Colors.black),),
+    title: Text(
+      "Logout",
+      style: TextStyle(color: Colors.black),
+    ),
+    content: Text(
+      "Are you sure you want to Logout?",
+      style: TextStyle(color: Colors.black),
+    ),
     actions: [
       cancelButton,
       continueButton,
@@ -244,4 +275,12 @@ showAlertDialog(BuildContext context) {
       return alert;
     },
   );
+}
+
+_locationmodalBottomSheetMenu(context) {
+  showModalBottomSheet(
+      context: context,
+      builder: (builder) {
+        return locationBottomsheet();
+      });
 }
