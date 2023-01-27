@@ -10,7 +10,6 @@ import 'package:swapbay/login.dart';
 import 'package:swapbay/my_ads.dart';
 import 'package:swapbay/mypost.dart';
 
-import 'loadingScreen.dart';
 import 'locationBottomsheet.dart';
 
 class MyHome extends StatefulWidget {
@@ -21,8 +20,6 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

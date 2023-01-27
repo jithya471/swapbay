@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "234796442763",
+    "project_id": "swapbay-63fd1",
+    "storage_bucket": "swapbay-63fd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234796442763:android:8a6042679dd853fa8fa08e",
+        "android_client_info": {
+          "package_name": "com.example.swapbay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234796442763-mfh2pbcfgsvohkvqilcvineu34s5rq4c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZiHetLeh_D6NhDbJ5ruBMOrg3KQFlg7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234796442763-mfh2pbcfgsvohkvqilcvineu34s5rq4c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

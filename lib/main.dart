@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:swapbay/Forms/bikes.dart';
@@ -13,7 +14,9 @@ import 'package:swapbay/sell.dart';
 import 'package:swapbay/settings.dart';
 import 'package:swapbay/splashScreen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   
   runApp(
     MaterialApp(
