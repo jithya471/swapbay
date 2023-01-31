@@ -101,6 +101,9 @@ class _MobilesState extends State<Mobiles> {
                   label: 'Describe what you are selling',
                 ),
                 EditTextfield(
+                        label: 'Place',
+                      ),
+                EditTextfield(
                         label: 'Price',
                       ),
                 Padding(

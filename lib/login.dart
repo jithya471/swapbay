@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:swapbay/button.dart';
 import 'package:swapbay/constants.dart';
@@ -6,12 +7,22 @@ import 'otp.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+  // static String verify = '';
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController phonecontroller = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
+  @override
+  // void initState() {
+  //   // phonecontroller.text = '+91';
+
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,11 +75,15 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         children: [
                           TextFormField(
+                            controller: phonecontroller,
+                            // onChanged: (value) {
+                              
+                            // },
                             keyboardType: TextInputType.number,
                             style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.black12),
@@ -100,11 +115,40 @@ class _LoginPageState extends State<LoginPage> {
                             width: double.infinity,
                             child: MyElevatedButton(
                               borderRadius: BorderRadius.circular(30),
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (context) => Otp()),
-                                );
+                              onPressed: () async {
+                                // await FirebaseAuth.instance.verifyPhoneNumber(
+                                //     verificationCompleted:
+                                //         (PhoneAuthCredential credential) async {
+                                //       await auth
+                                //           .signInWithCredential(credential)
+                                //           .then((value) => {
+                                //                 print(
+                                //                     'You are logged in successfully')
+                                //               });
+                                //     },
+                                //     verificationFailed:
+                                //         (FirebaseAuthException exception) {
+                                //       print(exception.message);
+                                //     },
+                                //     codeSent: (String verificationId,
+                                //         int? resendToken) {
+                                //       LoginPage.verify = verificationId;
+                                //       Navigator.of(context).push(
+                                //         MaterialPageRoute(
+                                //             builder: (context) => Otp()),
+                                //       );
+                                //       // verificationIDRecieved = verificationId;
+                                //     },
+                                //     codeAutoRetrievalTimeout:
+                                //         (String verificationId) {},
+                                //     phoneNumber:
+                                //         "${phonecontroller.text + verificationIDRecieved}"
+                                //         // "+919846988509"
+                                //         );
+                                 Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) => Otp(phonecontroller.text),
+                                  ) );
                               },
                               child: Padding(
                                 padding: EdgeInsets.all(14.0),
@@ -127,4 +171,21 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+  // void verifyNumber() {
+  //   auth.verifyPhoneNumber(
+  //       verificationCompleted: (PhoneAuthCredential credential) async {
+  //         await auth
+  //             .signInWithCredential(credential)
+  //             .then((value) => {print('You are logged in successfully')});
+  //       },
+  //       verificationFailed: (FirebaseAuthException exception) {
+  //         print(exception.message);
+  //       },
+  //       codeSent: (String verificationId, int? resendToken) {
+  //         verificationIDRecieved = verificationId;
+  //       },
+  //       codeAutoRetrievalTimeout: (String verificationId) {},
+  //       phoneNumber: phonecontroller.text);
+  // }
 }

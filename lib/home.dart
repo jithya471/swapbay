@@ -1,8 +1,13 @@
+import 'dart:async';
+
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:swapbay/accounts.dart';
 import 'package:swapbay/body.dart';
+import 'package:swapbay/button.dart';
 import 'package:swapbay/chat.dart';
 import 'package:swapbay/constants.dart';
 import 'package:path/path.dart';
@@ -20,6 +25,67 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+  // var latitude;
+  // var longitude;
+  var address;
+  // late StreamSubscription<Position> streamSubscription;
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      await Geolocator.openLocationSettings();
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+   
+    return await Geolocator.getCurrentPosition();
+  }
+
+  Future<void> getAddressFromLatLon(Position position) async {
+    position = await Geolocator.getCurrentPosition(
+            desiredAccuracy: LocationAccuracy.best)
+        .timeout(Duration(seconds: 5));
+
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+        position.latitude,
+        position.longitude,
+        
+      );
+      Placemark place = placemarks[0];
+      address = '${place.subLocality}, ${place.locality}';
+      print(placemarks[0]);
+      print(address);
+    } catch (err) {}
+   
+  }
+
+  getPosition() async {
+    Position position = await _determinePosition();
+    getAddressFromLatLon(position);
+    // print(position.latitude);
+    // print(position.longitude);
+  }
+
+  @override
+  void initState() {
+    getPosition();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -51,7 +117,7 @@ class _MyHomeState extends State<MyHome> {
             color: Colors.white,
           ),
           label: Text(
-            'tvm',
+            '${address}',
             style: TextStyle(color: Colors.white),
           ),
         )

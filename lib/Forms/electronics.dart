@@ -43,6 +43,9 @@ class _ElectronicsState extends State<Electronics> {
                           label: 'Describe What you are Selling',
                         ),
                         EditTextfield(
+                        label: 'Place',
+                      ),
+                        EditTextfield(
                           label: 'Price',
                         ),
                       ],

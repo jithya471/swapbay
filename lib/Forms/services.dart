@@ -37,6 +37,9 @@ class _ServicesState extends State<Services> {
                         label: 'Ad Title',
                       ),
                       EditTextfield(
+                        label: 'Place',
+                      ),
+                      EditTextfield(
                         label: 'Describe What are your Services',
                       ),
                     ],

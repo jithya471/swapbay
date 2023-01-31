@@ -219,6 +219,9 @@ class _JobsState extends State<Jobs> {
                           label: 'Ad Title',
                         ),
                         EditTextfield(
+                        label: 'Place',
+                      ),
+                        EditTextfield(
                           label: 'Describe What you are Selling',
                         ),
                       ],

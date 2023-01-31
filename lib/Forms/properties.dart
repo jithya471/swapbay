@@ -40,6 +40,9 @@ class _PropertiesState extends State<Properties> {
                         label: 'Describe What you are Selling',
                       ),
                       EditTextfield(
+                        label: 'Place',
+                      ),
+                      EditTextfield(
                         label: 'Price',
                       ),
                       Padding(

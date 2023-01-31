@@ -107,6 +107,9 @@ class _BikesState extends State<Bikes> {
                   label: 'Describe what you are selling',
                 ),
                 EditTextfield(
+                        label: 'Place',
+                      ),
+                EditTextfield(
                   label: 'Price',
                 ),
                 Padding(

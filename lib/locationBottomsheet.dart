@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:csc_picker/csc_picker.dart';
+import 'package:csc_picker/model/select_status_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,6 +16,10 @@ class locationBottomsheet extends StatefulWidget {
 }
 
 class _locationBottomsheetState extends State<locationBottomsheet> {
+  String countryValue = "";
+  String stateValue = "";
+  String cityValue = "";
+  String address = "";
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -44,14 +50,52 @@ class _locationBottomsheetState extends State<locationBottomsheet> {
             },
           ),
         ),
-        // Text('$place'),
-        MyElevatedButton(
-          onPressed: () {
-            //  Navigator.pop(context, cityName);
+        ListTile(
+          onTap: () {
+            
           },
-          child: Text('Get Location'),
-          borderRadius: BorderRadius.circular(50),
-        )
+          leading: Icon(
+            Icons.my_location,
+            color: primaryColor,
+          ),
+          title: Text(
+            'Use current location',
+            style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            child: Center(
+                child: Text(
+              'CHOOSE CITY',
+              style: TextStyle(color: primaryColor),
+            )),
+            width: MediaQuery.of(context).size.width,
+            // color: Colors.grey,
+          ),
+        ),
+        Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CSCPicker(
+              dropdownHeadingStyle: TextStyle(color: Colors.black),
+              dropdownItemStyle: TextStyle(color: Colors.black),
+              selectedItemStyle: TextStyle(color: primaryColor),
+              onCountryChanged: (value) {
+                // countryValue=value;
+              },
+              onStateChanged: (value) {
+                // stateValue=value!;
+              },
+              onCityChanged: (value) {},
+            )),
+        // MyElevatedButton(
+        //   onPressed: () {
+        //     //  Navigator.pop(context, cityName);
+        //   },
+        //   child: Text('Get Location'),
+        //   borderRadius: BorderRadius.circular(50),
+        // )
       ]),
     );
   }

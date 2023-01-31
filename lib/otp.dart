@@ -1,17 +1,35 @@
+import 'dart:math';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:swapbay/button.dart';
 import 'package:swapbay/constants.dart';
 import 'package:swapbay/home.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:swapbay/login.dart';
+import 'package:swapbay/register.dart';
 
 class Otp extends StatefulWidget {
-  const Otp({Key? key}) : super(key: key);
+  final String phone;
+  Otp(this.phone);
 
   @override
   _OtpState createState() => _OtpState();
 }
 
 class _OtpState extends State<Otp> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  String code = '';
+
+  //  LoginPage loginPage = LoginPage();
+
+  @override
+  void initState() {
+    verifyNumber();
+    print(widget.phone);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,8 +104,10 @@ class _OtpState extends State<Otp> {
                         textStyle: TextStyle(color: primaryColor),
                         appContext: context,
                         length: 6,
-
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          // code = value;
+                          // print(value);
+                        },
                         pinTheme: PinTheme(
                           shape: PinCodeFieldShape.box,
                           borderRadius: BorderRadius.circular(5),
@@ -96,13 +116,9 @@ class _OtpState extends State<Otp> {
                               horizontal: kDefaultPadding / 4),
                           fieldHeight: 30,
                           fieldWidth: 30,
-                          // activeFillColor: Colors.white,
                         ),
                         cursorColor: primaryColor,
                         animationDuration: const Duration(milliseconds: 300),
-                        // enableActiveFill: true,
-                        // errorAnimationController: errorController,
-                        // controller: textEditingController,
                         keyboardType: TextInputType.number,
                         boxShadows: const [
                           BoxShadow(
@@ -111,19 +127,20 @@ class _OtpState extends State<Otp> {
                             blurRadius: 10,
                           )
                         ],
-                        onCompleted: (v) {
-                          debugPrint("Completed");
+                        onCompleted: (pin) async {
+                          try {
+                            UserCredential _authResult = await FirebaseAuth
+                                .instance
+                                .signInWithCredential(
+                                    PhoneAuthProvider.credential(
+                                        verificationId: code, smsCode: pin));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => RegisterPage()));
+                          } catch (e) {
+                            print(e);
+                          }
                         },
                       )),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     _textFieldOTP(first: true, last: false),
-                      //     _textFieldOTP(first: false, last: false),
-                      //     _textFieldOTP(first: false, last: false),
-                      //     _textFieldOTP(first: false, last: true),
-                      //   ],
-                      // ),
                       SizedBox(
                         height: 22,
                       ),
@@ -132,8 +149,21 @@ class _OtpState extends State<Otp> {
                         child: MyElevatedButton(
                           borderRadius: BorderRadius.circular(24.0),
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MyHome()));
+                            // try {
+                            //   PhoneAuthCredential credential =
+                            //       PhoneAuthProvider.credential(
+                            //           verificationId: LoginPage.verify,
+                            //           smsCode: code);
+                            //   print(code);
+
+                            //   await FirebaseAuth.instance
+                            //       .signInWithCredential(credential);
+
+                            //   Navigator.of(context).push(MaterialPageRoute(
+                            //       builder: (context) => MyHome()));
+                            // } catch (e) {
+                            //   print(e);
+                            // }
                           },
                           child: Padding(
                             padding: EdgeInsets.all(14.0),
@@ -213,5 +243,22 @@ class _OtpState extends State<Otp> {
         ),
       ),
     );
+  }
+
+  void verifyNumber() {
+    auth.verifyPhoneNumber(
+        phoneNumber: "+91${widget.phone}",
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          await auth.signInWithCredential(credential).then((value) {
+            print("logged in sucessfully");
+          });
+        },
+        verificationFailed: (FirebaseAuthException exception) {
+          print(exception.message);
+        },
+        codeSent: (String verificationID, int? resendToken) {
+          code = verificationID;
+        },
+        codeAutoRetrievalTimeout: (String verificationID) {});
   }
 }

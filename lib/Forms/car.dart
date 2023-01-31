@@ -17,20 +17,7 @@ class Car extends StatefulWidget {
 
 class _CarState extends State<Car> {
   String? transmission;
-  // late File imageFile;
-
-  // final ImagePicker imagePicker = ImagePicker();
-  //     List<XFile>? imageFileList = [];
-
-  //     void selectImages() async {
-  //        final List<XFile>? selectedImages = await
-  //               imagePicker.pickMultiImage();
-  //          if (selectedImages!.isNotEmpty) {
-  //             imageFileList!.addAll(selectedImages);
-  //          }
-  //         print("Image List Length:" + imageFileList!.length.toString());
-  //         setState((){});
-  //     }
+ 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -182,6 +169,9 @@ class _CarState extends State<Car> {
                       ),
                       EditTextfield(
                         label: 'Describe What you are Selling',
+                      ),
+                      EditTextfield(
+                        label: 'Place',
                       ),
                       EditTextfield(
                         label: 'Price',
