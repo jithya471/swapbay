@@ -14,18 +14,32 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
+const snackBar = SnackBar(
+  content: Text('User already exist'),
+);
+
 TextEditingController nameController = TextEditingController();
 TextEditingController phoneController = TextEditingController();
 TextEditingController emailAddress = TextEditingController();
 TextEditingController genderController = TextEditingController();
+ 
 
 class _RegisterPageState extends State<RegisterPage> {
 //    final now = new DateTime.now();
 //  String formatter = DateFormat('yMd').format(now);
   void fetch() async {
     http.Response response = await createUser();
-
-    print(response.body);
+    Map<String, dynamic> myresponse = jsonDecode(response.body);
+    print(myresponse);
+    print(myresponse['errors']);
+    var error = myresponse['errors'];
+    if (response.statusCode == 200) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => MyHome()));
+    } else {
+      
+      ScaffoldMessenger.of(context).showSnackBar(error);
+    }
   }
 
   Future<http.Response> createUser() {
@@ -199,10 +213,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: MyElevatedButton(
                       borderRadius: BorderRadius.circular(20),
                       onPressed: () {
-                        fetch();
                         if (_formkey.currentState!.validate()) {
                           _formkey.currentState!.save();
-                          Navigator.pushNamed(context, '/home');
+                          fetch();
+
+                          //                 Navigator.of(context)
+                          // .push(MaterialPageRoute(builder: (context) => MyHome()));
                         } else {
                           setState(() {
                             _autovalidate = AutovalidateMode.always;

@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 2));
 
     Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
+        MaterialPageRoute(builder: (BuildContext context) => RegisterPage()));
   }
 
   @override

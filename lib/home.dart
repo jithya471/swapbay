@@ -67,7 +67,7 @@ class _MyHomeState extends State<MyHome> {
         
       );
       Placemark place = placemarks[0];
-      address = '${place.subLocality}, ${place.locality}';
+      address = '${place.name}, ${place.locality}';
       print(placemarks[0]);
       print(address);
     } catch (err) {}
